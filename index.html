@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Report</title>
+  <meta name="description" content="Project report website" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1 class="title">3D LiDAR + RGB Camera Fusion for Data Collection</h1>
+
+      <ul class="member-list" aria-label="Group members">
+        <li>Shenghua Jin</li>
+        <li>Ali Devjiani</li>
+        <li>Verrill Angelo</li>
+        <li>Joshua Coady</li>
+        <li>Darrick Gunawan</li>
+      </ul>
+
+      <div class="meta-line">CMPT419</div>
+      <div class="meta-line">Simon Fraser University</div>
+
+      <div class="button-row">
+        <a class="button" href="https://github.com/Darrickg/jetson-local-mapping" target="_blank" rel="noopener noreferrer">
+            <!-- <span class="icon">
+                <i class="fab fa-github"></i>
+            </span> -->
+            Github
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="abstract">
+      <div class="container">
+        <h2 class="section-title">Abstract</h2>
+        <p>
+          This project builds a calibrated, synchronized data-collection rig on a mobile robot using a Robosense AIRY 3D LiDAR and an RGB camera mounted on a Turtlebot2. The robot is teleoperated to collect time-synced LiDAR pointclouds and camera images for indoor mapping and perception research. The system extends off-the-shelf ROS 2 sensor drivers with a complete calibration pipeline: camera intrinsic and extrinsic calibration, LiDAR–camera extrinsic 6-DOF calibration, and a repeatable launch/data-recording workflow. The end result is a ROS 2 system that publishes correctly framed topics, supports visualization in RViz2, and can reliably record calibrated datasets. A visual interface allows raw sensor information to be observed alongside fused data representations.
+        </p>
+        <p>
+
+        </p>
+      </div>
+    </section>
+
+    <section id="hardware">
+      <div class="container">
+        <h2 class="section-title">Hardware</h2>
+        <p>
+            The hardware setup is built on a Turtlebot2 mobile robot platform. For depth sensing, we use a Robosense AIRY 3D LiDAR, and for visual sensing, we use a ZED stereo RGB camera operating at 1920×1080 (Full HD). All onboard processing and sensor integration are handled by an NVIDIA Jetson compute unit mounted on the robot. This combination provides synchronized 3D spatial and high-resolution visual data for our fusion pipeline.
+        </p>
+
+        <div class="media-frame">
+          <img src="assets/hardware.png" alt="Hardware setup" onerror="this.replaceWith(createPlaceholder('Hardware image placeholder — replace assets/hardware.png with your actual image.'))">
+          <div class="caption">Figure: Hardware setup overview.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teleop">
+      <div class="container">
+        <h2 class="section-title">Teleop</h2>
+        <p>
+            The teleoperation pipeline supports two input methods: keyboard control and game-controller control. Both methods interface through the Kobuki node, so the robot base receives motion commands through the same underlying driver path. For controller-based teleoperation, we use an EasySMX controller with a custom configuration file that maps joystick axes and buttons to the desired motion behavior. This setup allows quick switching between keyboard and controller operation while keeping control behavior consistent.
+        </p>
+
+        <div class="media-frame teleop-frame">
+          <video autoplay muted loop playsinline>
+            <source src="assets/teleop_demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="caption">Teleoperation demonstration with Easy SMX controller using custom configuration</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calibration">
+      <div class="container">
+        <h2 class="section-title">Calibration</h2>
+
+        <h3 class="subsection-title">Collecting Data</h3>
+        <p>
+          Explain how calibration data is collected. This can include recording checkerboard images,
+          sampling robot poses, capturing synchronized sensor streams, or gathering paired observations
+          needed for parameter estimation.
+        </p>
+
+        <h3 class="subsection-title">Camera Intrinsic and Extrinsic Calibration</h3>
+        <p>
+          Describe the intrinsic calibration process for each camera and how you estimated the camera pose
+          relative to the robot or workspace. Mention the software or toolbox used if relevant.
+        </p>
+
+        <div class="media-grid two">
+          <div class="media-frame">
+            <video autoplay muted loop playsinline controls>
+              <source src="assets/camera_calibration.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div class="caption">Video: Camera intrinsic and extrinsic calibration procedure.</div>
+          </div>
+
+          <div class="media-frame">
+            <img src="assets/camera_calibration.png" alt="Camera calibration visualization" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
+            <div class="caption">Figure: Camera calibration result.</div>
+          </div>
+        </div>
+
+        <h3 class="subsection-title">6D Extrinsic Sensor Calibration</h3>
+        <p>
+          Use this subsection to explain the alignment of sensors in a shared 6D reference frame.
+          You might describe the estimated rigid transforms, hand-eye calibration, or frame registration
+          steps used to align the robot, camera, and end-effector coordinates.
+        </p>
+      </div>
+    </section>
+
+    <section id="visualization">
+      <div class="container">
+        <h2 class="section-title">Visualization</h2>
+        <p>
+          Add a short description of the visualization output here. This could include sensor overlays,
+          3D scene reconstructions, detections, trajectories, or task-state visualizations.
+        </p>
+
+        <div class="media-frame">
+          <img src="assets/visualization.png" alt="Visualization output" onerror="this.replaceWith(createPlaceholder('Visualization image placeholder — replace assets/visualization.png with your actual image.'))">
+          <div class="caption">Figure: Visualization result.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Built as a report-style project website template.
+    </div>
+  </footer>
+
+  <script>
+    function createPlaceholder(text) {
+      const div = document.createElement('div');
+      div.className = 'placeholder';
+      div.textContent = text;
+      return div;
+    }
+  </script>
+</body>
+</html>
