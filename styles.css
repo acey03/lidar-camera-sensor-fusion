@@ -125,6 +125,16 @@ p {
   margin-top: 1rem;
 }
 
+.reprojection-frame {
+  width: min(360px, 100%);
+  margin: 0;
+}
+
+.centered-media {
+  width: min(360px, 100%);
+  margin: 1rem auto 0;
+}
+
 .teleop-frame video {
   width: min(360px, 100%);
   margin: 0 auto;

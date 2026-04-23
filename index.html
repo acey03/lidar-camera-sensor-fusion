@@ -54,7 +54,7 @@
             The hardware setup is built on a Turtlebot2 mobile robot platform. For depth sensing, we use a Robosense AIRY 3D LiDAR, and for visual sensing, we use a ZED stereo RGB camera operating at 1920×1080 (Full HD). All onboard processing and sensor integration are handled by an NVIDIA Jetson compute unit mounted on the robot. This combination provides synchronized 3D spatial and high-resolution visual data for our fusion pipeline.
         </p>
 
-        <div class="media-frame">
+        <div class="media-frame centered-media">
           <img src="assets/hardware.png" alt="Hardware setup" onerror="this.replaceWith(createPlaceholder('Hardware image placeholder — replace assets/hardware.png with your actual image.'))">
           <div class="caption">Figure: Hardware setup overview.</div>
         </div>
@@ -93,7 +93,7 @@
         </p>
 
         <div class="media-grid two">
-          <div class="media-frame">
+          <div class="media-frame centered-media">
             <video autoplay muted loop playsinline>
               <source src="assets/camera_calibration_open_cv.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -101,10 +101,6 @@
             <div class="caption">Video: Camera intrinsic and extrinsic calibration (Detecting checkerboard in images).</div>
           </div>
 
-          <div class="media-frame">
-            <img src="assets/reprojection_error.png" alt="Reprojection Error Graphs" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
-            <div class="caption">Figure: Reprojection Error graph.</div>
-          </div>
         </div>
 
         <h3 class="subsection-title">6D Extrinsic Sensor Calibration</h3>
@@ -119,6 +115,11 @@
         <div class="media-frame">
             <img src="assets/6d_calibration_side_by_side.png" alt="6d Extrinsics side-by-side" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
             <div class="caption">Figure: 6d extrinsic sensor calibration in Matlab.</div>
+        </div>
+        <p></p>
+        <div class="media-frame reprojection-frame">
+          <img src="assets/reprojection_error.png" alt="Reprojection Error Graphs" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
+          <div class="caption">Figure: Reprojection Error graph.</div>
         </div>
       </div>
     </section>
