@@ -84,38 +84,42 @@
 
         <h3 class="subsection-title">Collecting Data</h3>
         <p>
-          Explain how calibration data is collected. This can include recording checkerboard images,
-          sampling robot poses, capturing synchronized sensor streams, or gathering paired observations
-          needed for parameter estimation.
+          A diverse series of pointcloud to image pairs were collected through a custom capture script with PTP for time sync. Diversity here was more important than volume for use in calibration.
         </p>
 
         <h3 class="subsection-title">Camera Intrinsic and Extrinsic Calibration</h3>
         <p>
-          Describe the intrinsic calibration process for each camera and how you estimated the camera pose
-          relative to the robot or workspace. Mention the software or toolbox used if relevant.
+          Computed camera focal lengths, optical centers, radial and tangential distortion values using OpenCV on raw image data. The values were verified by undistorting a set of test data from the same camera.
         </p>
 
         <div class="media-grid two">
           <div class="media-frame">
-            <video autoplay muted loop playsinline controls>
-              <source src="assets/camera_calibration.mp4" type="video/mp4" />
+            <video autoplay muted loop playsinline>
+              <source src="assets/camera_calibration_open_cv.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div class="caption">Video: Camera intrinsic and extrinsic calibration procedure.</div>
+            <div class="caption">Video: Camera intrinsic and extrinsic calibration (Detecting checkerboard in images).</div>
           </div>
 
           <div class="media-frame">
-            <img src="assets/camera_calibration.png" alt="Camera calibration visualization" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
-            <div class="caption">Figure: Camera calibration result.</div>
+            <img src="assets/reprojection_error.png" alt="Reprojection Error Graphs" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
+            <div class="caption">Figure: Reprojection Error graph.</div>
           </div>
         </div>
 
         <h3 class="subsection-title">6D Extrinsic Sensor Calibration</h3>
         <p>
-          Use this subsection to explain the alignment of sensors in a shared 6D reference frame.
-          You might describe the estimated rigid transforms, hand-eye calibration, or frame registration
-          steps used to align the robot, camera, and end-effector coordinates.
+          Imported image + point cloud pairs into MatLab’s camera-lidar calibrator. We optimized accuracy in a couple of ways:
         </p>
+        <ul>
+          <li>Region of Interest: Strict spatial bounding boxes to filter background noise.</li>
+          <li>CAD Seeding: Injected baseline 6D transforms.</li>
+          <li>Solver Parameters: Tight tolerance values and low downsampling.</li>
+        </ul>
+        <div class="media-frame">
+            <img src="assets/6d_calibration_side_by_side.png" alt="6d Extrinsics side-by-side" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
+            <div class="caption">Figure: 6d extrinsic sensor calibration in Matlab.</div>
+        </div>
       </div>
     </section>
 
@@ -123,23 +127,24 @@
       <div class="container">
         <h2 class="section-title">Visualization</h2>
         <p>
-          Add a short description of the visualization output here. This could include sensor overlays,
-          3D scene reconstructions, detections, trajectories, or task-state visualizations.
+          Calibrated transform is exported, inverted, and applied through RViz2 via a static tf2 transform.
         </p>
-
+        <p>
+          Rviz shows the raw sensor data from the camera as a raw image with the LiDAR pointcloud mapped onto it.
+        </p>
         <div class="media-frame">
           <img src="assets/visualization.png" alt="Visualization output" onerror="this.replaceWith(createPlaceholder('Visualization image placeholder — replace assets/visualization.png with your actual image.'))">
-          <div class="caption">Figure: Visualization result.</div>
+          <div class="caption">Figure: RViz2 accurately projects the 3D LiDAR point cloud onto the undistorted 2D ZED camera image.</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <!-- <footer>
     <div class="container">
       Built as a report-style project website template.
     </div>
-  </footer>
+  </footer> -->
 
   <script>
     function createPlaceholder(text) {
