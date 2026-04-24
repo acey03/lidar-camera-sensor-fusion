@@ -131,7 +131,7 @@ p {
 }
 
 .centered-media {
-  width: min(360px, 100%);
+  width: min(720px, 100%);
   margin: 1rem auto 0;
 }
 
@@ -145,6 +145,12 @@ p {
   grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+.media-grid.one {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .caption {

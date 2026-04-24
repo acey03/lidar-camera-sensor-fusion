@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Report</title>
-  <meta name="description" content="Project report website" />
+  <title>LiDAR Camera Sensor Fusion</title>
+  <meta name="description" content="Project Website" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -56,7 +56,7 @@
 
         <div class="media-frame centered-media">
           <img src="assets/hardware.png" alt="Hardware setup" onerror="this.replaceWith(createPlaceholder('Hardware image placeholder — replace assets/hardware.png with your actual image.'))">
-          <div class="caption">Figure: Hardware setup overview.</div>
+          <div class="caption">Figure 1: Hardware setup overview.</div>
         </div>
       </div>
     </section>
@@ -92,7 +92,7 @@
           Computed camera focal lengths, optical centers, radial and tangential distortion values using OpenCV on raw image data. The values were verified by undistorting a set of test data from the same camera.
         </p>
 
-        <div class="media-grid two">
+        <div class="media-grid one">
           <div class="media-frame centered-media">
             <video autoplay muted loop playsinline>
               <source src="assets/camera_calibration_open_cv.mp4" type="video/mp4" />
@@ -114,12 +114,12 @@
         </ul>
         <div class="media-frame">
             <img src="assets/6d_calibration_side_by_side.png" alt="6d Extrinsics side-by-side" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
-            <div class="caption">Figure: 6d extrinsic sensor calibration in Matlab.</div>
+            <div class="caption">Figure 2: 6d extrinsic sensor calibration in Matlab.</div>
         </div>
         <p></p>
         <div class="media-frame reprojection-frame">
           <img src="assets/reprojection_error.png" alt="Reprojection Error Graphs" onerror="this.replaceWith(createPlaceholder('Camera calibration image placeholder — replace assets/camera_calibration.png with your actual image.'))">
-          <div class="caption">Figure: Reprojection Error graph.</div>
+          <div class="caption">Figure 3: Reprojection Error graph.</div>
         </div>
       </div>
     </section>
@@ -135,7 +135,7 @@
         </p>
         <div class="media-frame">
           <img src="assets/visualization.png" alt="Visualization output" onerror="this.replaceWith(createPlaceholder('Visualization image placeholder — replace assets/visualization.png with your actual image.'))">
-          <div class="caption">Figure: RViz2 accurately projects the 3D LiDAR point cloud onto the undistorted 2D ZED camera image.</div>
+          <div class="caption">Figure 4: RViz2 accurately projects the 3D LiDAR point cloud onto the undistorted 2D ZED camera image.</div>
         </div>
       </div>
     </section>
